@@ -1,7 +1,7 @@
 # Token Lab 2.0
 
 **An interactive 43-minute lesson on tokenization and context-window management for large language models, built from five hands-on simulations, with XP, badges and a mastery challenge that reward understanding rather than clicking.**
-
+👉 **Live Interactive Demo:** [https://sayedishan.github.io/token-lab/](https://sayedishan.github.io/token-lab/)
 You don't just read about tokens. You tokenize your own text and inspect every token, run the Byte-Pair Encoding algorithm one merge at a time, keep a simulated assistant alive inside its context window, decide what a chatbot should remember (and never store), and finish with a five-level mastery challenge whose practical answers are computed by the same engines the labs use.
 
 > Created by **Sayed Ishan** as the teaching artifact for the *Instructional Designer Intern (AI Courses)* assignment. Topic chosen: **1. Tokenization and Context Window Management**. This work is for hiring evaluation only.
