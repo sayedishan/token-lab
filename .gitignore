@@ -1,0 +1,14 @@
+# dependencies (the lesson itself has none; these only appear if you install the optional e2e tools)
+node_modules/
+package-lock.json
+
+# local/temporary files
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# never commit secrets (this project uses none)
+.env
+.env.*

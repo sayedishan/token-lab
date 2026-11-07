@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Token Lab · Tokenization and Context Windows</title>
+    <meta name="description" content="Token Lab 2.0: a 43-minute interactive lesson with five simulations on tokenization, Byte-Pair Encoding, context windows and AI memory." />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0a0f1f" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Apply the saved theme before first paint to avoid a flash. -->
+    <script>
+      try {
+        var s = JSON.parse(localStorage.getItem('token-lab:v1') || '{}');
+        if (s && (s.theme === 'dark' || s.theme === 'light')) document.documentElement.setAttribute('data-theme', s.theme);
+      } catch (e) {}
+    </script>
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/labs.css" />
+    <link rel="stylesheet" href="css/sims.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the lesson</a>
+
+    <header class="topbar">
+      <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Open lesson menu" aria-controls="sidebar" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+      </button>
+      <a class="brand" href="#/start">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2" y="3" width="13" height="10" rx="3" fill="var(--s1)" />
+          <rect x="17" y="3" width="13" height="10" rx="3" fill="var(--s2)" />
+          <rect x="2" y="15" width="8" height="10" rx="3" fill="var(--s3)" />
+          <rect x="12" y="15" width="18" height="10" rx="3" fill="var(--s4)" />
+          <rect x="2" y="27" width="28" height="3" rx="1.5" fill="var(--ink)" opacity=".85" />
+        </svg>
+        <span class="brand__name">Token Lab</span>
+        <span class="brand__sub">Tokenization and context windows</span>
+      </a>
+      <span class="topbar__spacer"></span>
+      <span class="pill hide-sm" id="time-left"></span>
+      <button type="button" class="xpchip" id="xp-chip" aria-label="Level 1. Open progress and badges"></button>
+      <button type="button" class="icon-btn" id="inst-btn" aria-pressed="false" aria-label="Turn on instructor view (facilitation notes)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18v12H3z" /><path d="M12 16v5" /><path d="M8 21h8" /></svg>
+      </button>
+      <button type="button" class="icon-btn" id="theme-btn" aria-label="Switch theme"></button>
+      <div class="topbar__progress" id="topbar-progress" aria-hidden="true"></div>
+    </header>
+
+    <div class="shell">
+      <aside class="sidebar" id="sidebar" data-open="false" aria-label="Lesson sections">
+        <h2 class="sidebar__title">Your 45-minute path</h2>
+        <nav aria-label="Lesson sections"><ol class="nav" id="nav"></ol></nav>
+        <div class="timebox" id="timebox"></div>
+      </aside>
+      <div class="scrim" id="scrim" data-open="false"></div>
+
+      <main id="main" tabindex="-1">
+        <noscript>
+          <p class="callout">This lesson is interactive and needs JavaScript. Please enable it and reload.</p>
+        </noscript>
+        <div class="view" id="view"></div>
+        <nav class="pager" id="pager" aria-label="Previous and next section"></nav>
+        <p class="muted small" style="max-width: var(--content-w); margin: var(--sp-6) auto 0">
+          Token Lab 2.0 · created by Sayed Ishan · Interactive teaching artifact: Tokenization and Context Window Management. All content, examples and code are original to this lesson; sources are listed on the last page.
+        </p>
+      </main>
+    </div>
+
+    <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div id="toasts" class="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+    <!-- Plain scripts (not ES modules) so index.html works by double-click: browsers block module imports from file:// -->
+    <script src="js/core/bpe.js"></script>
+    <script src="js/core/estimate.js"></script>
+    <script src="js/core/context.js"></script>
+    <script src="js/core/challenge.js"></script>
+    <script src="js/core/memory.js"></script>
+    <script src="js/core/toy.js"></script>
+    <script src="js/core/modes.js"></script>
+    <script src="js/core/gamification.js"></script>
+    <script src="js/core/survival.js"></script>
+    <script src="js/core/memorymgr.js"></script>
+    <script src="js/core/master.js"></script>
+    <script src="js/data/corpus.js"></script>
+    <script src="js/data/lesson.js"></script>
+    <script src="js/data/quizzes.js"></script>
+    <script src="js/data/real-tokens.js"></script>
+    <script src="js/ui/dom.js"></script>
+    <script src="js/ui/store.js"></script>
+    <script src="js/ui/components.js"></script>
+    <script src="js/ui/gamify.js"></script>
+    <script src="js/ui/charts.js"></script>
+    <script src="js/ui/quiz.js"></script>
+    <script src="js/ui/code-runner.js"></script>
+    <script src="js/sections/start.js"></script>
+    <script src="js/sections/why.js"></script>
+    <script src="js/sections/lab1.js"></script>
+    <script src="js/sections/lab2.js"></script>
+    <script src="js/sections/master-ui.js"></script>
+    <script src="js/sections/survival-ui.js"></script>
+    <script src="js/sections/lab3.js"></script>
+    <script src="js/sections/memory-ui.js"></script>
+    <script src="js/sections/lab4.js"></script>
+    <script src="js/sections/realworld.js"></script>
+    <script src="js/sections/challenge.js"></script>
+    <script src="js/sections/summary.js"></script>
+    <script src="js/sections/progress.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

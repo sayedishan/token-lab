@@ -1,0 +1,14 @@
+{
+  "name": "token-lab",
+  "version": "2.0.0",
+  "description": "Token Lab 2.0 - an interactive 43-minute lesson on tokenization and context-window management for LLMs: five simulations, XP and badges, no dependencies, fully offline.",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "node tools/serve.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Sayed Ishan"
+}
